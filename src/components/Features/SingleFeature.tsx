@@ -1,7 +1,6 @@
 import { Feature } from "@/types/feature";
 import Image from "next/image";
-const SingleFeature = ({ feature }: { feature: Feature }) => {
-  const { icon, title, paragraph } = feature;
+const SingleFeature = ({ icon, title, paragraph }) => {
   return (
     <div className="w-full">
       <div className="wow fadeInUp" data-wow-delay=".15s">
