@@ -18,7 +18,7 @@ export default function FAQPage() {
           Frequently <span className="font-bold">Asked Questions</span>
         </h2>
         <p className="text-gray-400 mt-3 text-sm sm:text-base max-w-2xl mx-auto">
-          Dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's.
+          Dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry.
         </p>
       </div>
 
