@@ -29,11 +29,13 @@ const AboutSectionOne = () => {
                 mb="24px"
               />
               <SectionTitle
+                title="Why Attend?"
                 paragraph="The main ‘thrust’ is to focus on educating attendees on how to best protect highly vulnerable business applications with interactive panel discussions and roundtables."
                 mb="44px"
               />
 
-             
+
+
             </div>
 
             <div className="w-full px-4 lg:w-1/2">
@@ -44,7 +46,7 @@ const AboutSectionOne = () => {
                   fill
                   className="mx-auto max-w-full drop-shadow-three dark:hidden dark:drop-shadow-none lg:mr-0"
                 />
-                
+
                 <Image
                   src="/images/hero/hero.svg"
                   alt="about-image"
