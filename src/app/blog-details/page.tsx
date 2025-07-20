@@ -233,7 +233,7 @@ const BlogDetailsPage = () => {
                           cx="37.5"
                           cy="37.5"
                           r="37.5"
-                          fill="#4A6CF7"
+                          fill="#E32222"
                         />
                         <mask
                           id="mask0_111:596"
@@ -249,7 +249,7 @@ const BlogDetailsPage = () => {
                             cx="37.5"
                             cy="37.5"
                             r="37.5"
-                            fill="#4A6CF7"
+                            fill="#E32222"
                           />
                         </mask>
                         <g mask="url(#mask0_111:596)">
@@ -258,7 +258,7 @@ const BlogDetailsPage = () => {
                             cx="37.5"
                             cy="37.5"
                             r="37.5"
-                            fill="url(#paint0_radial_111:596)"
+                            fill="#E32222"
                           />
                           <g opacity="0.8" filter="url(#filter0_f_111:596)">
                             <circle
