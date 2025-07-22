@@ -1,5 +1,6 @@
 "use client";
 
+import CustomCursor from "@/components/CustomCursor";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import ScrollToTop from "@/components/ScrollToTop";
@@ -24,6 +25,7 @@ export default function RootLayout({
       <body className={`bg-[#FCFCFC] dark:bg-black ${inter.className}`}>
         <Providers>
           <Header />
+            <CustomCursor />
           {children}
           <Footer />
           <ScrollToTop />
