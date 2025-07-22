@@ -1,5 +1,12 @@
+"use client";
+
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import SectionTitle from "../Common/SectionTitle";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const checkIcon = (
   <svg width="16" height="13" viewBox="0 0 16 13" className="fill-current">
@@ -8,6 +15,60 @@ const checkIcon = (
 );
 
 const AboutSectionOne = () => {
+  const aboutRef = useRef(null);
+  const imageRef = useRef(null);
+  const whyRef = useRef(null);
+
+  useEffect(() => {
+    gsap.fromTo(
+      aboutRef.current,
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        scrollTrigger: {
+          trigger: aboutRef.current,
+          start: "top 90%",
+          end: "top 60%",
+          scrub: true,
+        },
+      }
+    );
+
+    gsap.fromTo(
+      imageRef.current,
+      { opacity: 0, x: 0 },
+      {
+        opacity: 1,
+        x: 0,
+        rotate: 360,
+        duration: 3,
+        scrollTrigger: {
+          trigger: imageRef.current,
+          start: "top 90%",
+          end: "top 60%",
+          scrub: true,
+         
+        },
+      }
+    );
+
+    gsap.fromTo(
+      whyRef.current,
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        scrollTrigger: {
+          trigger: whyRef.current,
+          start: "top 90%",
+          end: "top 60%",
+          scrub: true,
+        },
+      }
+    );
+  }, []);
+
   const List = ({ text }) => (
     <p className="text-body-color mb-5 flex items-center text-lg font-medium">
       <span className="bg-primary/10 text-primary mr-4 flex h-[30px] w-[30px] items-center justify-center rounded-md">
@@ -23,22 +84,23 @@ const AboutSectionOne = () => {
         <div className="border-b border-body-color/[.15] pb-16 dark:border-white/[.15] md:pb-20 lg:pb-28">
           <div className="-mx-4 flex flex-wrap items-center">
             <div className="w-full px-4 lg:w-1/2">
-              <SectionTitle
-                title="About Us"
-                paragraph="The main ‘thrust’ is to focus on educating attendees on how to best protect highly vulnerable business applications with interactive panel discussions and roundtables."
-                mb="24px"
-              />
-              <SectionTitle
-                title="Why Attend?"
-                paragraph="The main ‘thrust’ is to focus on educating attendees on how to best protect highly vulnerable business applications with interactive panel discussions and roundtables."
-                mb="44px"
-              />
-
-
-
+              <div ref={aboutRef}>
+                <SectionTitle
+                  title="About Us"
+                  paragraph="The main ‘thrust’ is to focus on educating attendees on how to best protect highly vulnerable business applications with interactive panel discussions and roundtables."
+                  mb="24px"
+                />
+              </div>
+              <div ref={whyRef}>
+                <SectionTitle
+                  title="Why Attend?"
+                  paragraph="The main ‘thrust’ is to focus on educating attendees on how to best protect highly vulnerable business applications with interactive panel discussions and roundtables."
+                  mb="44px"
+                />
+              </div>
             </div>
 
-            <div className="w-full px-4 lg:w-1/2">
+            <div className="w-full px-4 lg:w-1/2" ref={imageRef}>
               <div className="relative mx-auto aspect-25/24 max-w-[500px] lg:mr-0">
                 <Image
                   src="/images/hero/hero.svg"
@@ -46,7 +108,6 @@ const AboutSectionOne = () => {
                   fill
                   className="mx-auto max-w-full drop-shadow-three dark:hidden dark:drop-shadow-none lg:mr-0"
                 />
-
                 <Image
                   src="/images/hero/hero.svg"
                   alt="about-image"
