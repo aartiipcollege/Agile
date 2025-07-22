@@ -1,25 +1,52 @@
+"use client";
+import { useEffect, useRef } from "react";
 import { Testimonial } from "@/types/testimonial";
 import Image from "next/image";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
 const starIcon = (
   <svg width="18" height="16" viewBox="0 0 18 16" className="fill-current">
     <path d="M9.09815 0.361679L11.1054 6.06601H17.601L12.3459 9.59149L14.3532 15.2958L9.09815 11.7703L3.84309 15.2958L5.85035 9.59149L0.595291 6.06601H7.0909L9.09815 0.361679Z" />
   </svg>
 );
 
+gsap.registerPlugin(ScrollTrigger);
+
 const SingleTestimonial = ({ testimonial }: { testimonial: Testimonial }) => {
   const { star, name, image, content, designation } = testimonial;
+  const cardRef = useRef<HTMLDivElement>(null);
 
-  let ratingIcons = [];
-  for (let index = 0; index < star; index++) {
-    ratingIcons.push(
-      <span key={index} className="text-yellow">
-        {starIcon}
-      </span>,
-    );
-  }
+  useEffect(() => {
+    if (cardRef.current) {
+      gsap.fromTo(
+        cardRef.current,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.2,
+           rotate : 361,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: cardRef.current,
+            start: "top 90%",
+            end: "top 50%",
+            scrub: true,
+          },
+        }
+      );
+    }
+  }, []);
+
+  const ratingIcons = Array.from({ length: star }, (_, index) => (
+    <span key={index} className="text-yellow">
+      {starIcon}
+    </span>
+  ));
 
   return (
-    <div className="w-full">
+    <div className="w-full" ref={cardRef}>
       <div className="shadow-two hover:shadow-one dark:bg-dark dark:shadow-three dark:hover:shadow-gray-dark rounded-xs bg-white p-8 duration-300 lg:px-5 xl:px-8">
         <div className="mb-5 flex items-center space-x-1">{ratingIcons}</div>
         <p className="border-body-color/10 text-body-color mb-8 border-b pb-8 text-base leading-relaxed dark:border-white/10 dark:text-white">

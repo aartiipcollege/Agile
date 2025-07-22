@@ -41,8 +41,8 @@ layer(base);
   --color-gray-800: #1f2937;
   --color-gray-900: #111827;
   --color-gray-950: #030712;
-  --color-gray-dark: #2e1f1e;
-  --color-gray-light: #f9f0f0;
+  --color-gray-dark: #201e2e;
+  --color-gray-light: #f0f4f9;
 
   --shadow-sign-up: 0px 5px 10px rgba(4, 10, 34, 0.2);
   --shadow-one: 0px 2px 3px rgba(7, 7, 77, 0.05);
