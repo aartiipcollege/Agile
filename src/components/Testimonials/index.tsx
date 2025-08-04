@@ -1,6 +1,9 @@
+"use client";
+
 import { Testimonial } from "@/types/testimonial";
 import SectionTitle from "../Common/SectionTitle";
 import SingleTestimonial from "./SingleTestimonial";
+import Slider from "react-slick";
 
 const testimonialData: Testimonial[] = [
   {
@@ -30,9 +33,48 @@ const testimonialData: Testimonial[] = [
     image: "/images/testimonials/auth-03.png",
     star: 5,
   },
+  {
+    id: 4,
+    name: "Kasis Frenci",
+    designation: "Founder @Lineicons",
+    content:
+      "Our members are so impressed. It's intuitive. It's clean. It's distraction free. If you're building a community.",
+    image: "/images/testimonials/auth-03.png",
+    star: 5,
+  },
+   {
+    id: 5,
+    name: "Arice Frenci",
+    designation: "Founder @Lineicons",
+    content:
+      "Our members are so impressed. It's intuitive. It's clean. It's distraction free. If you're building a community.",
+    image: "/images/testimonials/auth-03.png",
+    star: 5,
+  },
+  
 ];
 
 const Testimonials = () => {
+  const settings = {
+    dots: false,
+    arrows: true,
+    infinite: true,
+    speed: 800,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1024, // lg
+        settings: { slidesToShow: 2 },
+      },
+      {
+        breakpoint: 768, // md
+        settings: { slidesToShow: 1 },
+      },
+    ],
+  };
   return (
     <section className="dark:bg-bg-color-dark bg-gray-light relative z-10 py-16 md:py-20 lg:py-28">
       <div className="container">
@@ -42,12 +84,16 @@ const Testimonials = () => {
           center
         />
 
-        <div className="grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
+        {/* Slider here */}
+        <Slider {...settings}>
           {testimonialData.map((testimonial) => (
-            <SingleTestimonial key={testimonial.id} testimonial={testimonial} />
+            <div key={testimonial.id} className="px-3">
+              <SingleTestimonial testimonial={testimonial} />
+            </div>
           ))}
-        </div>
+        </Slider>
       </div>
+
       <div className="absolute right-0 top-5 z-[-1]">
         <svg
           width="238"

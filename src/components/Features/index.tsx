@@ -1,32 +1,92 @@
-import SectionTitle from "../Common/SectionTitle";
-import SingleFeature from "./SingleFeature";
-import featuresData from "./featuresData";
+"use client";
 
-const Services = () => {
+import { FaRocket, FaMoneyBillWave, FaGamepad, FaUserAstronaut, FaFileAlt, FaCogs } from "react-icons/fa";
+import { FiArrowRight } from "react-icons/fi";
+
+const services = [
+  {
+    icon: <FaRocket size={40} />,
+    title: "Lorem Ipsum Dummy",
+    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry standard dummy.",
+  },
+  {
+    icon: <FaMoneyBillWave size={40} />,
+    title: "Lorem Ipsum Dummy",
+    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry standard dummy.",
+  },
+  {
+    icon: <FaGamepad size={40} />,
+    title: "Lorem Ipsum Dummy",
+    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry standard dummy.",
+  },
+  {
+    icon: <FaUserAstronaut size={40} />,
+    title: "Lorem Ipsum Dummy",
+    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry standard dummy.",
+  },
+  {
+    icon: <FaFileAlt size={40} />,
+    title: "Lorem Ipsum Dummy",
+    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry standard dummy.",
+  },
+  {
+    icon: <FaCogs size={40} />,
+    title: "Lorem Ipsum Dummy",
+    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry standard dummy.",
+  },
+];
+
+export default function Features() {
   return (
-    <>
-      <section id="features" className="py-16 md:py-20 lg:py-28">
-        <div className="container">
-          <SectionTitle
-            title="Services We Provide"
-            paragraph="There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some form."
-            center
-          />
-
-          <div className="grid grid-cols-1 gap-x-8 gap-y-14 md:grid-cols-2 lg:grid-cols-3">
-            {featuresData.map((feature) => (
-              <SingleFeature
-                key={feature.id}
-                icon={feature.icon}
-                title={feature.title}
-                paragraph={feature.paragraph}
-              />
-            ))}
-          </div>
+    <section className="text-white py-28 px-6 md:px-12 lg:px-20">
+      <div className="container">
+        <div className="text-center mb-12">
+          <p className="text-red-500 uppercase tracking-widest font-semibold">Our Services</p>
+          <h2 className="text-4xl font-bold mt-2">
+            <span className="text-white">Services </span>
+            <span className="font-light text-gray-300">We Provide</span>
+          </h2>
+          <p className="mt-4 text-gray-400 max-w-xl mx-auto">
+            Dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's.
+          </p>
         </div>
-      </section>
-    </>
-  );
-};
 
-export default Services;
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+          {services.map((service, index) => (
+            <div
+              key={index}
+              className={` group relative rounded-xl p-6 pb-12 text-center transition-all duration-300 
+        bg-[#1C1C24]
+     border
+         border-transparent hover:border-red-500 hover:bg-gradient-to-br hover:from-red-900/20 hover:to-transparent}
+      `}
+            >
+              <div className="text-red-500 flex justify-center mb-4">{service.icon}</div>
+              <h3 className="font-bold text-lg mb-2">{service.title}</h3>
+              <p className="text-gray-400 text-sm">{service.description}</p>
+
+              {/* Red arrow - show only on hover or first card */}
+              <div
+                className={`
+          absolute left-1/2 -bottom-5 transform -translate-x-1/2 
+          bg-red-500 w-10 h-10 rounded-full flex items-center justify-center 
+          transition-opacity duration-300 
+opacity-0 group-hover:opacity-100
+        `}
+              >
+                <FiArrowRight className="text-white" />
+              </div>
+            </div>
+          ))}
+        </div>
+
+
+        <div className="flex justify-center mt-12">
+          <button className="bg-red-500 text-white px-6 py-2 rounded-md hover:bg-red-600 transition">
+            Learn More
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+}
