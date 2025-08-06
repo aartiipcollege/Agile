@@ -22,10 +22,12 @@ const AboutSectionOne = () => {
   useEffect(() => {
     gsap.fromTo(
       aboutRef.current,
-      { opacity: 0, y: 50 },
+      { opacity: 0, x: -100 },
       {
         opacity: 1,
-        y: 0,
+        x: 0,
+        duration: 1.2,
+        ease: "power3.out",
         scrollTrigger: {
           trigger: aboutRef.current,
           start: "top 90%",
@@ -36,29 +38,13 @@ const AboutSectionOne = () => {
     );
 
     gsap.fromTo(
-      imageRef.current,
-      { opacity: 0, x: 0 },
+      whyRef.current,
+      { opacity: 0, x: 100 },
       {
         opacity: 1,
         x: 0,
-        rotate: 360,
-        duration: 3,
-        scrollTrigger: {
-          trigger: imageRef.current,
-          start: "top 90%",
-          end: "top 60%",
-          scrub: true,
-         
-        },
-      }
-    );
-
-    gsap.fromTo(
-      whyRef.current,
-      { opacity: 0, y: 50 },
-      {
-        opacity: 1,
-        y: 0,
+        duration: 1.2,
+        ease: "power3.out",
         scrollTrigger: {
           trigger: whyRef.current,
           start: "top 90%",
@@ -67,6 +53,24 @@ const AboutSectionOne = () => {
         },
       }
     );
+
+    gsap.fromTo(
+    imageRef.current,
+    { opacity: 0, scale: 0.7, rotate: -45 },
+    {
+      opacity: 1,
+      scale: 1,
+      rotate: 0,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: imageRef.current,
+        start: "top 90%",     
+        end: "top 60%",      
+        scrub: true,       
+      },
+    }
+  );
+
   }, []);
 
   const List = ({ text }) => (
