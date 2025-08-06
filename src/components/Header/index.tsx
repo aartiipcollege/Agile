@@ -1,46 +1,64 @@
 "use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import ThemeToggler from "./ThemeToggler";
 import menuData from "./menuData";
+import gsap from "gsap";
 
 const Header = () => {
-  // Navbar toggle
   const [navbarOpen, setNavbarOpen] = useState(false);
-  const navbarToggleHandler = () => {
-    setNavbarOpen(!navbarOpen);
+  const [sticky, setSticky] = useState(false);
+  const [openIndex, setOpenIndex] = useState(-1);
+  const usePathName = usePathname();
+
+  const headerRef = useRef(null);
+  const logoRef = useRef(null);
+  const navRef = useRef(null);
+  const signBtnsRef = useRef(null);
+
+  const handleStickyNavbar = () => {
+    setSticky(window.scrollY >= 80);
   };
 
-  // Sticky Navbar
-  const [sticky, setSticky] = useState(false);
-  const handleStickyNavbar = () => {
-    if (window.scrollY >= 80) {
-      setSticky(true);
-    } else {
-      setSticky(false);
-    }
+  const navbarToggleHandler = () => setNavbarOpen(!navbarOpen);
+
+  const handleSubmenu = (index: number) => {
+    setOpenIndex(openIndex === index ? -1 : index);
   };
+
   useEffect(() => {
     window.addEventListener("scroll", handleStickyNavbar);
-  });
+    return () => window.removeEventListener("scroll", handleStickyNavbar);
+  }, []);
 
-  // submenu handler
-  const [openIndex, setOpenIndex] = useState(-1);
-  const handleSubmenu = (index) => {
-    if (openIndex === index) {
-      setOpenIndex(-1);
-    } else {
-      setOpenIndex(index);
-    }
-  };
+  useEffect(() => {
+    gsap.fromTo(
+      headerRef.current,
+      { y: -80, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, ease: "power3.out" }
+    );
 
-  const usePathName = usePathname();
+    gsap.fromTo(
+      [logoRef.current, navRef.current, signBtnsRef.current],
+      { opacity: 0, y: -20 },
+      {
+        opacity: 1,
+        y: 0,
+        stagger: 0.2,
+        delay: 0.8,
+        duration: 1,
+        ease: "power2.out",
+      }
+    );
+  }, []);
 
   return (
     <>
       <header
+        ref={headerRef}
         className={`header top-0 left-0 z-40 flex w-full items-center ${
           sticky
             ? "dark:bg-gray-dark dark:shadow-sticky-dark shadow-sticky fixed z-9999 bg-white/80 backdrop-blur-xs transition"
@@ -49,12 +67,12 @@ const Header = () => {
       >
         <div className="container">
           <div className="relative -mx-4 flex items-center justify-between">
-            <div className="w-40 max-w-full px-4 xl:mr-12">
+            <div className="w-40 max-w-full px-4 xl:mr-12" ref={logoRef}>
               <Link
                 href="/"
                 className={`header-logo block w-full ${
                   sticky ? "py-5 lg:py-2" : "py-8"
-                } `}
+                }`}
               >
                 <Image
                   src="/images/logo/Logo-black.jpg"
@@ -72,8 +90,9 @@ const Header = () => {
                 />
               </Link>
             </div>
-            <div className="flex w-full items-center  justify-end gap-8 px-4">
-              <div>
+
+            <div className="flex w-full items-center justify-end gap-8 px-4">
+              <div ref={navRef}>
                 <button
                   onClick={navbarToggleHandler}
                   id="navbarToggler"
@@ -82,20 +101,21 @@ const Header = () => {
                 >
                   <span
                     className={`relative my-1.5 block h-0.5 w-[30px] bg-black transition-all duration-300 dark:bg-white ${
-                      navbarOpen ? "top-[7px] rotate-45" : " "
+                      navbarOpen ? "top-[7px] rotate-45" : ""
                     }`}
                   />
                   <span
                     className={`relative my-1.5 block h-0.5 w-[30px] bg-black transition-all duration-300 dark:bg-white ${
-                      navbarOpen ? "opacity-0" : " "
+                      navbarOpen ? "opacity-0" : ""
                     }`}
                   />
                   <span
                     className={`relative my-1.5 block h-0.5 w-[30px] bg-black transition-all duration-300 dark:bg-white ${
-                      navbarOpen ? "top-[-8px] -rotate-45" : " "
+                      navbarOpen ? "top-[-8px] -rotate-45" : ""
                     }`}
                   />
                 </button>
+
                 <nav
                   id="navbarCollapse"
                   className={`navbar border-body-color/50 dark:border-body-color/20 dark:bg-dark absolute right-0 z-30 w-[250px] rounded border-[.5px] bg-white px-6 py-4 duration-300 lg:visible lg:static lg:w-auto lg:border-none lg:!bg-transparent lg:p-0 lg:opacity-100 ${
@@ -141,10 +161,10 @@ const Header = () => {
                                 openIndex === index ? "block" : "hidden"
                               }`}
                             >
-                              {menuItem.submenu.map((submenuItem, index) => (
+                              {menuItem.submenu.map((submenuItem, subIdx) => (
                                 <Link
                                   href={submenuItem.path}
-                                  key={index}
+                                  key={subIdx}
                                   className="text-dark hover:text-primary block rounded-sm py-2.5 text-sm lg:px-3 dark:text-white/70 dark:hover:text-white"
                                 >
                                   {submenuItem.title}
@@ -158,7 +178,11 @@ const Header = () => {
                   </ul>
                 </nav>
               </div>
-              <div className="flex items-center justify-end pr-16 lg:pr-0">
+
+              <div
+                className="flex items-center justify-end pr-16 lg:pr-0"
+                ref={signBtnsRef}
+              >
                 <Link
                   href="/signin"
                   className="text-dark hidden px-7 py-3 text-base font-medium hover:opacity-70 md:block dark:text-white"
