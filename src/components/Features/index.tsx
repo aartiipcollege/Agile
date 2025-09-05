@@ -13,6 +13,7 @@ import {
   FaCogs,
 } from "react-icons/fa";
 import { FiArrowRight } from "react-icons/fi";
+import SectionTitle from "../Common/SectionTitle";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -82,18 +83,13 @@ export default function Features() {
   return (
     <section className="text-white py-28 px-6 md:px-12 lg:px-20">
       <div className="container">
-        <div className="text-center mb-12">
-          <p className="text-red-500 uppercase tracking-widest font-semibold">
-            Our Services
-          </p>
-          <h2 className="text-4xl font-bold mt-2">
-            <span className="text-white">Services </span>
-            <span className="font-light text-gray-300">We Provide</span>
-          </h2>
-          <p className="mt-4 text-gray-400 max-w-xl mx-auto">
-            Dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's.
-          </p>
-        </div>
+        <SectionTitle
+            title="Services we provide"
+            paragraph=" Dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's."
+            center
+            mb="80px"
+          />
+         
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {services.map((service, index) => (
@@ -101,13 +97,13 @@ export default function Features() {
               key={index}
               ref={(el) => (boxesRef.current[index] = el)}
               className={` group relative rounded-xl p-6 pb-12 text-center transition-all duration-300 
-                bg-[#1C1C24]
+                 bg-[#f5edef]
                 border
-                border-transparent hover:border-red-500 hover:bg-gradient-to-br hover:from-red-900/20 hover:to-transparent`}
+                border-transparent hover:border-red-500 hover:bg-gradient-to-br hover:from-red-900/20 hover:to-transparent dark:bg-[#1C1C24]`}
             >
               <div className="text-red-500 flex justify-center mb-4">{service.icon}</div>
-              <h3 className="font-bold text-lg mb-2">{service.title}</h3>
-              <p className="text-gray-400 text-sm">{service.description}</p>
+              <h3 className="font-bold text-black text-lg mb-2 dark:text-white">{service.title}</h3>
+              <p className="text-gray-500 text-sm dark:text-gray-400">{service.description}</p>
 
               <div
                 className={`absolute left-1/2 -bottom-5 transform -translate-x-1/2 
