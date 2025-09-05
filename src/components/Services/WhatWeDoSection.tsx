@@ -4,16 +4,16 @@ import Image from "next/image";
 
 const WhatWeDoSection = () => {
   return (
-    <section className="bg-black text-white py-16 px-4 sm:px-8 lg:px-20">
+    <section className="bg-[#f5edef] dark:bg-black text-white py-16 px-4 sm:px-8 lg:px-20">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
         {/* Text Section */}
         <div>
           <h3 className="text-[#E32222] text-base sm:text-lg font-semibold mb-3">What We Do?</h3>
-          <h2 className="text-3xl sm:text-4xl font-bold leading-snug mb-6">
+          <h2 className="text-black text-3xl sm:text-4xl  leading-snug mb-6 dark:text-white">
             The Service We Offer Is Specifically Designed To Meet{" "}
-            <span className="text-white font-extrabold">Your Needs.</span>
+            <span className="text-black font-extrabold dark:text-white">Your Needs.</span>
           </h2>
-          <p className="text-gray-300 mb-8 text-sm sm:text-base">
+          <p className="text-gray-500 mb-8 text-sm sm:text-base">
             Sed in metus libero. Sed volutpat eget dui ut tempus. Fusce fringilla tincidunt
             laoreet. Morbi ac metus vitae diam scelerisque malesuada eget eu mauris. Cras
             varius lorem ac velit pharetra.
