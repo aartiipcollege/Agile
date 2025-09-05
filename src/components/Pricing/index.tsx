@@ -1,4 +1,36 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
 export default function FAQPage() {
+  const boxesRef = useRef([]);
+
+  useEffect(() => {
+    boxesRef.current.forEach((box, index) => {
+      gsap.fromTo(
+        box,
+        { opacity: 0, y: 100, scale: 0.9 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: box,
+            start: "top 90%",
+            end: "top 60%",
+            scrub: true,
+          },
+        }
+      );
+    });
+  }, []);
+
   const questions = [
     "Lorem Ipsum Dummy?",
     "Dummy the printing typesetting industry?",
@@ -26,6 +58,7 @@ export default function FAQPage() {
         {questions.map((question, index) => (
           <div
             key={index}
+            ref ={(el) => (boxesRef.current[index] = el)}
             className="bg-gray-100 dark:bg-[#1D2430] rounded-xl px-6 py-5 flex justify-between items-center cursor-pointer hover:bg-gray-200 dark:hover:bg-[#2D333F] transition-all duration-300"
           >
             <span className="text-sm sm:text-base">{question}</span>
