@@ -1,15 +1,21 @@
 import { Brand } from "@/types/brand";
 import Image from "next/image";
 import brandsData from "./brandsData";
+import SectionTitle from "../Common/SectionTitle";
 
 const OurPartner = () => {
   return (
     <section className="pt-16">
       <div className="container">
+        <SectionTitle
+            title="Our partners"
+            paragraph=" Dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's."
+            center
+            mb="80px"
+          />
         <div className="-mx-4 flex flex-wrap  justify-center ">
-          <h3 className=" text-primary text-1xl text-center py-4">Our Partners</h3>
           <div className="w-full px-4">
-            <div className="flex flex-wrap items-center justify-center rounded-xs bg-gray-light px-8 py-8 dark:bg-gray-dark sm:px-10 md:px-[50px] md:py-[40px] xl:p-[50px] 2xl:px-[70px] 2xl:py-[60px]">
+            <div className="flex flex-wrap items-center justify-center rounded-xs bg-[#f5edef] px-8 py-8 dark:bg-gray-dark sm:px-10 md:px-[50px] md:py-[40px] xl:p-[50px] 2xl:px-[70px] 2xl:py-[60px]">
               {brandsData.map((brand) => (
                 <SingleBrand key={brand.id} brand={brand} />
               ))}
