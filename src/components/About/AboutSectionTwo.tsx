@@ -75,11 +75,10 @@ export default function AboutSectionTwo() {
       <div className="max-w-7xl mx-auto">
         {/* Top section */}
         <div className="mb-8">
-          <p className="text-sm text-red-500 tracking-widest font-semibold uppercase">About Us</p>
-          <h2 className="text-3xl md:text-4xl font-light mt-2 leading-relaxed md:leading-snug">
+          <h2 className="text-black text-3xl md:text-4xl font-light mt-2 leading-relaxed md:leading-snug dark:text-white">
             Lorem Ipsum is <span className="font-semibold">
               The Simply Dummy <br />
-              <span className="text-white font-bold">
+              <span className="text-black font-bold dark:text-white">
                 Text of The Printing and Type Setting Industry.
               </span>
             </span>
@@ -95,7 +94,7 @@ export default function AboutSectionTwo() {
 
           {/* Right Text Content */}
           <div ref={textRef}>
-            <p className="text-m mt-7 leading-relaxed">
+            <p className="text-black text-m mt-7 leading-relaxed dark:text-white">
               Lorem Ipsum is simply dummy text of the printing and typesetting industry.
               Lorem Ipsum has been the industry's standard dummy text <span className="text-red-500">ever since the 1500s</span>, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
             </p>
@@ -109,21 +108,21 @@ export default function AboutSectionTwo() {
         <div ref={statsRef} className="mt-16">
           <h3 className="text-center text-sm text-red-500 tracking-widest font-semibold mb-8 uppercase">Statistics</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            <div className="bg-[#1C1C24] p-6 rounded-lg stat-card">
-              <h4 className="text-2xl font-bold text-white">$53M</h4>
-              <p className="text-sm text-gray-400 mt-2">Lorem Ipsum Sit</p>
+            <div className="bg-[#f5edef] dark:bg-[#1C1C24] p-6 rounded-lg stat-card">
+              <h4 className="text-2xl font-bold text-black dark:text-white">$53M</h4>
+              <p className="text-sm text-gray-500 mt-2">Lorem Ipsum Sit</p>
             </div>
-            <div className="bg-[#1C1C24] p-6 rounded-lg stat-card">
-              <h4 className="text-2xl font-bold text-white">28M</h4>
-              <p className="text-sm text-gray-400 mt-2">Dummy Text</p>
+            <div className="bg-[#f5edef] dark:bg-[#1C1C24] p-6 rounded-lg stat-card">
+              <h4 className="text-2xl font-bold text-black dark:text-white">28M</h4>
+              <p className="text-sm text-gray-500 mt-2">Dummy Text</p>
             </div>
-            <div className="bg-[#1C1C24] p-6 rounded-lg stat-card">
-              <h4 className="text-2xl font-bold text-white">68,998<span className="text-red-500">+</span></h4>
-              <p className="text-sm text-gray-400 mt-2">Lorem Ipsum</p>
+            <div className="bg-[#f5edef] dark:bg-[#1C1C24] p-6 rounded-lg stat-card">
+              <h4 className="text-2xl font-bold text-black dark:text-white">68,998<span className="text-red-500">+</span></h4>
+              <p className="text-sm text-gray-500 mt-2">Lorem Ipsum</p>
             </div>
-            <div className="bg-[#1C1C24] p-6 rounded-lg stat-card">
-              <h4 className="text-2xl font-bold text-white">120,345<span className="text-red-500">+</span></h4>
-              <p className="text-sm text-gray-400 mt-2">Number of projects</p>
+            <div className="bg-[#f5edef] dark:bg-[#1C1C24] p-6 rounded-lg stat-card">
+              <h4 className="text-2xl font-bold text-black dark:text-white">120,345<span className="text-red-500">+</span></h4>
+              <p className="text-sm text-gray-500 mt-2">Number of projects</p>
             </div>
           </div>
         </div>
