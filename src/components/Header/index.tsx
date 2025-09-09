@@ -183,18 +183,14 @@ const Header = () => {
                 className="flex items-center justify-end pr-16 lg:pr-0"
                 ref={signBtnsRef}
               >
+              
                 <Link
-                  href="/signin"
-                  className="text-dark hidden px-7 py-3 text-base font-medium hover:opacity-70 md:block dark:text-white"
-                >
-                  Sign In
-                </Link>
-                <Link
-                  href="/signup"
-                  className="ease-in-up shadow-btn hover:shadow-btn-hover bg-primary hover:bg-primary/90 hidden rounded-xs px-8 py-3 text-base font-medium text-white transition duration-300 md:block md:px-9 lg:px-6 xl:px-9"
-                >
-                  Sign Up
-                </Link>
+  href="tel:+916393173883"
+  className="ease-in-up shadow-btn hover:shadow-btn-hover bg-primary hover:bg-primary/90 hidden rounded-xs px-8 py-3 text-base font-medium text-white transition duration-300 md:block md:px-3 lg:px-6 xl:px-3  "
+>
+  +91-6393-173-883
+</Link>
+
                 <div>
                   <ThemeToggler />
                 </div>
