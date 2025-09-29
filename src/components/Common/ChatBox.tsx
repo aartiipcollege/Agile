@@ -54,11 +54,11 @@ export default function ChatBox() {
     };
 
     return (
-        <div className="fixed bottom-6 right-6 z-50">
+        <div className="fixed bottom-22 right-6 z-50">
             {/* Floating button */}
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="flex items-center justify-center w-14 h-14 rounded-full bg-blue-600 text-white shadow-lg hover:bg-blue-700 transition"
+                className="flex items-center justify-center w-14 h-14 rounded-full bg-primary text-white shadow-lg hover:bg-primary transition"
             >
                 {isOpen ? <X size={24} /> : <MessageCircle size={24} />}
             </button>
@@ -74,7 +74,7 @@ export default function ChatBox() {
                         className="absolute bottom-16 right-0 w-80 h-96 bg-white shadow-2xl rounded-2xl overflow-hidden flex flex-col"
                     >
                         {/* Header */}
-                        <div className="bg-blue-600 text-white p-3 flex justify-between items-center">
+                        <div className="bg-primary text-white p-3 flex justify-between items-center">
                             <h2 className="text-lg font-semibold">Chat Support</h2>
                             <button onClick={() => setIsOpen(false)}>
                                 <X size={20} />
@@ -88,7 +88,7 @@ export default function ChatBox() {
                                 <div
                                     key={idx}
                                     className={`p-2 rounded-lg max-w-[80%] break-words ${msg.type === "user"
-                                            ? "bg-blue-600 text-white self-end"
+                                            ? "bg-primary text-white self-end"
                                             : "bg-gray-100 self-start"
                                         }`}
                                 >
@@ -103,7 +103,7 @@ export default function ChatBox() {
                             {/* Loader for bot typing */}
                             {loading && (
                                 <div className="p-2 rounded-lg max-w-[80%] bg-gray-100 self-start flex items-center gap-2">
-                                    <Loader size={20} />
+                                    <Loader size={15} />
                                 </div>
                             )}
 
@@ -117,13 +117,13 @@ export default function ChatBox() {
                                 placeholder="Type a message..."
                                 value={message}
                                 onChange={(e) => setMessage(e.target.value)}
-                                className="flex-1 border rounded-lg px-3 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="flex-1 border rounded-lg px-3 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-primary"
                                 onKeyDown={(e) => e.key === "Enter" && handleSend()}
                             />
                             <button
                                 onClick={handleSend}
                                 disabled={loading}
-                                className="bg-blue-600 p-2 rounded-lg text-white disabled:bg-blue-300 hover:bg-blue-700 transition"
+                                className="bg-primary p-2 rounded-lg text-white disabled:bg-gray-400 hover:bg-blue-700 transition"
                             >
                                 <Send size={20} />
                             </button>
